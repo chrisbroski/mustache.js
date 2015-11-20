@@ -2,6 +2,7 @@
 
 (function defineMustache(global, factory) {
     'use strict';
+
     if (typeof exports === 'object' && exports && typeof exports.nodeName !== 'string') {
         factory(exports); // CommonJS
     } else if (typeof define === 'function' && define.amd) {
@@ -16,7 +17,7 @@
     var objectToString = Object.prototype.toString,
         isArray,
         regExpTest,
-        nonSpaceRe,
+        nonSpaceRe = /\S/,
         entityMap,
         whiteRe = /\s*/,
         spaceRe = /\s+/,
@@ -73,7 +74,6 @@
         return regExpTest.call(re, string);
     }
 
-    nonSpaceRe = /\S/;
     function isWhitespace(string) {
         return !testRegExp(nonSpaceRe, string);
     }
